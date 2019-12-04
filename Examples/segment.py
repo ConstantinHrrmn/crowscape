@@ -37,7 +37,7 @@ try:
     segment.write_display()
 
     # Wait a quarter second (less than 1 second to prevent colon blinking getting$
-    time.sleep(0.25)
+    time.sleep(1)
 except KeyboardInterrupt:
     segment.clear()
     segment.write_display()
