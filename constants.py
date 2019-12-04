@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 from Adafruit_LED_Backpack import SevenSegment
 import Adafruit_CharLCD as LCD
+import Adafruit_DHT
 
 # single red led
 led_pin = 26
@@ -105,3 +106,7 @@ class LightSensor():
 
 # Touch
 touch = 17
+
+#temperature / humidity
+temp = 4
+temp_sensor_type = 11
