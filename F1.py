@@ -8,6 +8,9 @@ second = 0
 
 base_second = 59
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(buzzer, GPIO.OUT)
+
 while(True):
 
 
@@ -20,21 +23,16 @@ while(True):
   sev_seg.set_digit(3, second % 10)        # Ones
   # Toggle colon
   sev_seg.set_colon(second % 2)              # Toggle colon at 1Hz
-
+  
+  #if(second == 30 or second == 0):
+      # Make buzzer sound
+      #GPIO.output(buzzer, GPIO.HIGH)
+      
   second -= 1
-
+  
   if(second < 0):
       second = base_second
       minute -= 1
-	  
-  if(second % 30 = 0):
-	  GPIO.setmode(GPIO.BCM)
-	  GPIO.setup(buzzer, GPIO.OUT)
-	  # Make buzzer sound
-	  GPIO.output(buzzer, GPIO.HIGH)
-	  time.sleep(0.1)
-	  # Stop buzzer sound
-	  GPIO.output(buzzer, GPIO.LOW)
 	  
   # Write the display buffer to the hardware.  This must be called to
   # update the actual display LEDs.
@@ -42,3 +40,4 @@ while(True):
 
   # Wait a quarter second (less than 1 second to prevent colon blinking getting$
   time.sleep(1)
+  GPIO.output(buzzer, GPIO.LOW)
