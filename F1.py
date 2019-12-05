@@ -1,4 +1,4 @@
-from constants import sev_seg, time
+from constants import sev_seg, time, buzzer, GPIO
 
 sev_seg.begin()
 
@@ -26,8 +26,16 @@ while(True):
   if(second < 0):
       second = base_second
       minute -= 1
-
-
+	  
+  if(second % 30 = 0):
+	  GPIO.setmode(GPIO.BCM)
+	  GPIO.setup(buzzer, GPIO.OUT)
+	  # Make buzzer sound
+	  GPIO.output(buzzer, GPIO.HIGH)
+	  time.sleep(0.1)
+	  # Stop buzzer sound
+	  GPIO.output(buzzer, GPIO.LOW)
+	  
   # Write the display buffer to the hardware.  This must be called to
   # update the actual display LEDs.
   sev_seg.write_display()
