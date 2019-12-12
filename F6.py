@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from constants import time,led_matrix,ButtonMatrix,GPIO
 
 from luma.led_matrix.device import max7219
@@ -20,6 +21,8 @@ def allOn():
                 return False
     return True
 
+def Enigme():
+    return "Tout dois être rouge !"
 
 def draw():
     serial = spi(port=0, device=1, gpio=noop())
@@ -30,7 +33,7 @@ def draw():
                 if(matrixState[row][col]):
                     draw.rectangle((row*2,col*2,row*2+1,col*2+1),outline="white")
 
-def main(cascaded, block_orientation, rotate):
+def Start(cascaded, block_orientation, rotate):
     draw()
     playing = True
     while(playing):
@@ -62,13 +65,15 @@ def main(cascaded, block_orientation, rotate):
                     # return each output pin to high
                     GPIO.output(buttons.columnPins[j],1)
     print("You successfully completed the module")
-if __name__ == "__main__":
+
+
+# if __name__ == "__main__":
     
     # cascaded = Number of cascaded MAX7219 LED matrices, default=1
     # block_orientation = choices 0, 90, -90, Corrects block orientation when wired vertically, default=0
     # rotate = choices 0, 1, 2, 3, Rotate display 0=0°, 1=90°, 2=180°, 3=270°, default=0
    
-    try:
-        main(cascaded=1, block_orientation=90, rotate=0)
-    except KeyboardInterrupt:
-        pass
+ #   try:
+ #      Start(cascaded=1, block_orientation=90, rotate=0)
+  #  except KeyboardInterrupt:
+    #    pass

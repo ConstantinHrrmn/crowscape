@@ -12,9 +12,9 @@ def DisplayOnSVG(minute, second):
     
     sev_seg.set_colon(second % 2)
     sev_seg.write_display()
-    
-    
-def StartTimer():
+      
+def Start():
+    print("Timer Started")
     sev_seg.begin()
     
     minute = 0 # le nombre de minutes avec lequel le minuteur commence
@@ -34,5 +34,3 @@ def StartTimer():
             minute -= 1
         
         time.sleep(1)
-
-#StartTimer()
