@@ -19,7 +19,9 @@ class HTMLWriter:
         driver = webdriver.Firefox()
 
         driver.get(self.filename)
-        driver.refresh()
+        while True:
+            time.sleep(20)
+            driver.refresh()
         driver.quit()
 
     
