@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from constants import time,led_matrix,ButtonMatrix,GPIO
+from constants import time,ButtonMatrix,GPIO
 
 from luma.led_matrix.device import max7219
 from luma.core.interface.serial import spi, noop
@@ -20,6 +20,13 @@ def allOn():
             if(not col):
                 return False
     return True
+
+def allOff():
+    matrixState = [[False,False,False,False],
+    [False,False,False,False],
+    [False,False,False,False],
+    [False,False,False,False]]
+    draw()
 
 def Enigme():
     return "Tout dois être rouge !"

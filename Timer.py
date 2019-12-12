@@ -14,11 +14,10 @@ def DisplayOnSVG(minute, second):
     sev_seg.write_display()
       
 def Start():
-    print("Timer Started")
     sev_seg.begin()
     
     minute = 0 # le nombre de minutes avec lequel le minuteur commence
-    second = 5 # le nombre de secondes avec lequel le minuteur commence
+    second = 3 # le nombre de secondes avec lequel le minuteur commence
     base_second = 59 # Les secondes max par défaut
     
     while True:   

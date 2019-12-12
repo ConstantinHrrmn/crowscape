@@ -23,7 +23,7 @@ def CreateCode():
     for i in range(5):
         row = randint(0,3)
         col = randint(0,3)
-        print("x : " + str(row) + " | y : " + str(col))
+        #print("x : " + str(row) + " | y : " + str(col))
         my_coords.append(Coordonnees(row, col))
 
 def Enigme():
@@ -62,7 +62,7 @@ def Start():
                         if GPIO.input(buttons.rowPins[i]) == 0:
                             # button pressed, activate it
                             buttons.activateButton(i,j)
-                            print("x:" + str(j) + " | y: " + str(i))
+                            #print("x:" + str(j) + " | y: " + str(i))
 
                             if(coordToFound.row == j and coordToFound.col == i):
                                 index+=1
@@ -70,11 +70,11 @@ def Start():
                                     module_done = False
                                 else:
                                     coordToFound = my_coords[index]
-                                    print("FOUND")
+                                    print("Good")
                             else:
                                 index = 0
                                 coordToFound = my_coords[index]
-                                print("ERROR")
+                                print("Fail")
 
                             # do nothing while button is being held down
                             while(buttons.buttonHeldDown(i)):
