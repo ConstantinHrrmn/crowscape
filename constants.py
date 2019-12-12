@@ -20,8 +20,8 @@ class ButtonMatrix():
 
         GPIO.setmode(GPIO.BCM)
 
-        # matrix button ids
-        self.buttonIDs = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+        # matrix button ids [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+        self.buttonIDs = [[4,3,2,1],[8,7,6,5],[12,11,10,9],[16,15,14,13]]
         # gpio inputs for rows
         self.rowPins = [27,22,5,6]
         # gpio outputs for columns
@@ -53,11 +53,6 @@ sev_seg = SevenSegment.SevenSegment(address=0x70)
 
 # buzzer 
 buzzer = 13
-
-# lcd 
-# Define LCD column and row size for 16x2 LCD.
-lcd_columns = 16
-lcd_rows    = 2
 
 # Initialize the LCD using the pins
 lcd = LCD.Adafruit_CharLCDBackpack(address=0x21)
