@@ -1,8 +1,10 @@
+#!/usr/bin/python3
 import time
 from selenium import webdriver
 import webbrowser
 
 class HTMLWriter:
+
     def __init__(self):
         self.filename = "index.html"
 
@@ -17,10 +19,10 @@ class HTMLWriter:
 
     def refresh_page(self):
         driver = webdriver.Firefox()
-
         driver.get(self.filename)
         driver.refresh()
         driver.quit()
-
-    
-    
+        
+    def maximize(self):
+        driver = webdriver.Firefox()
+        driver.maximize_window()
