@@ -40,7 +40,7 @@ def draw():
                 if(matrixState[row][col]):
                     draw.rectangle((row*2,col*2,row*2+1,col*2+1),outline="white")
 
-def Start(cascaded, block_orientation, rotate):
+def Start():
     draw()
     playing = True
     while(playing):
@@ -62,7 +62,7 @@ def Start(cascaded, block_orientation, rotate):
                             if(j+1 < len(matrixState[i])):
                                 matrixState[i][j+1] = not matrixState[i][j+1]
                             draw()
-                            
+
                             if(allOn()):
                                 playing = False
 
@@ -72,15 +72,3 @@ def Start(cascaded, block_orientation, rotate):
                     # return each output pin to high
                     GPIO.output(buttons.columnPins[j],1)
     print("You successfully completed the module")
-
-
-# if __name__ == "__main__":
-    
-    # cascaded = Number of cascaded MAX7219 LED matrices, default=1
-    # block_orientation = choices 0, 90, -90, Corrects block orientation when wired vertically, default=0
-    # rotate = choices 0, 1, 2, 3, Rotate display 0=0°, 1=90°, 2=180°, 3=270°, default=0
-   
- #   try:
- #      Start(cascaded=1, block_orientation=90, rotate=0)
-  #  except KeyboardInterrupt:
-    #    pass
