@@ -82,7 +82,7 @@ def Start():
                     # return each output pin to high
                     GPIO.output(buttons.columnPins[j],1)
 
-    print("This is the end of the module")
+    print("ENIGME TERMINEE")
 
     lcd.clear()
-    lcd.message("MODULE DONE")
+    lcd.message("OK !")

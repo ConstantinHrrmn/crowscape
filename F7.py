@@ -9,6 +9,7 @@ import time
 
 GPIO.setwarnings(False)
 
+index = -1
 
 #signal.signal(signal.SIGINT, end_read)
 # create the reader object
@@ -43,14 +44,14 @@ def Start():
 
             while continue_reading:
                 (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
-                if status == MIFAREReader.MI_OK:
-                    print("Carte détectée")
+                #if status == MIFAREReader.MI_OK:
+                    #print("Carte détectée")
 
                 (status,uid) = MIFAREReader.MFRC522_Anticoll()
 
                 if status == MIFAREReader.MI_OK:      
                     if cardids[index] == uid[0]:
-                        print("CARTE OK")
+                        #print("CARTE OK")
                         continue_reading = False
                     else:
                         print("ERROR L'ENIGME VA RECOMMENCER...")
@@ -59,6 +60,5 @@ def Start():
                                         
             print("LEVEZ")
             time.sleep(3)
-      
-index = -1
-Start()
+    
+    print ("ENIGME TERMINEE")

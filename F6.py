@@ -71,4 +71,5 @@ def Start():
                                 pass
                     # return each output pin to high
                     GPIO.output(buttons.columnPins[j],1)
-    print("You successfully completed the module")
+    allOff()
+    print("ENIGME TERMINEE")

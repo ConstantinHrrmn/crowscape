@@ -20,5 +20,8 @@ def Start():
     print("Enigme 2 : " + F6.Enigme())
     F6.Start()
 
-    print("Enigme TAMER : " + F4.Enigme())
+    print("Enigme 3 : " + F4.Enigme())
     F4.Start()
+    
+    print("Enigme 4 : " + F7.Enigme())
+    F7.Start()
