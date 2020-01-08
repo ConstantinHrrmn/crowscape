@@ -2,12 +2,15 @@ from constants import Adafruit_DHT,temp,temp_sensor_type
 
 def Start():
     humidity, temperature = Adafruit_DHT.read_retry(temp_sensor_type,temp)
-
-    while humidity < 80:
+    print("Calibration du module")
+    while humidity > 95:
+        humidity, temperature = Adafruit_DHT.read_retry(temp_sensor_type,temp)
+    print("Calibration du module terminée")
+    while humidity < 95:
         humidity, temperature = Adafruit_DHT.read_retry(temp_sensor_type,temp)
         
-    print("Humidité au dessus de 80")
+    print("Humidité au dessus de 95")
+    print("ENIGME TERMINEE")
     
 def Enigme():
     return "Quand le thé est chaud, il faut souffler sur la boite bleue."
-    
