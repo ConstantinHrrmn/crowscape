@@ -4,6 +4,7 @@ from multiprocessing import Process
 
 import Timer
 import main
+import F8
 
 p1 = Process(target=Timer.Start,)
 print("The Game Started")
@@ -18,6 +19,7 @@ p2.start()
 playing = True
 
 while playing:
+    
     if(p1.is_alive() is False):
         print("THE BOMB EXPLODED")
         p1.terminate()
