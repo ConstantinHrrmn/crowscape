@@ -49,7 +49,7 @@ class LightSensor():
         return self.convertToNumber(data)
 
 
-def Start():
+def Start(var):
 
     playing = True
     sensor = LightSensor()
@@ -65,4 +65,7 @@ def Start():
     print("ENIGME TERMINEE")
 
 def Enigme():
-    return "La lumière cache parfois la solution"
+    return "Vas-y cache la petite boite bleu de droite"
+    
+def Title():
+    return "Et la lumière fut"

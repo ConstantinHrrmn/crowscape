@@ -9,28 +9,28 @@ import F6 # Enigme des carrés rouge
 import F7 # Code avec les cates RFID
 import F9 # Simon says
 
+from window import UI  # Affichage des énigmes sur l'écran du raspberry
+
+userInterface = UI()
+userInterface.Display()
+
+Enigmalist = [F2, F5, F6, F7]
+
+def Update_View(title, enigmetxt, enigmenb):
+    userInterface.SetTitle(title)
+    userInterface.SetEnigmeText(enigmetxt)
+    userInterface.SetEnigmeNumberText("Enigme %02d/%02d"%(enigmenb, len(Enigmalist)))
+    userInterface.Display()
+
 def Start():
-    F6.allOff()
+    index = 0
+    while(index < len(Enigmalist)):
+        Update_View(Enigmalist[index].Title(), Enigmalist[index].Enigme(), index+1)
+        Enigmalist[index].Start(userInterface)
+        index += 1
+    
+    #print("Enigme 5 : " + F9.Enigme())
+    #F9.Start()
+    
+    
 
-    #print(F2.Enigme())
-    #F2.Start()
-
-    #print("Enigme 1 : " + F5.Enigme())
-    #F5.Start()
-
-    #print("Enigme 2 : " + F6.Enigme())
-    #F6.Start()
-    
-    #F6.allOff()
-
-    #print("Enigme 3 : " + F4.Enigme())
-    #F4.Start()
-    
-    #print("Enigme 4 : " + F7.Enigme())
-    #F7.Start()
-    
-    print("Enigme 5 : " + F9.Enigme())
-    F9.Start()
-    
-    
-    

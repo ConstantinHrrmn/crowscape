@@ -10,7 +10,7 @@ class UI:
         self.mainview.attributes("-fullscreen", True)   
         
         self.titleLabel = Label(self.mainview, text="Enigme 1", font=("Arial", 64))
-        self.enigmeLabel = Label(self.mainview, text="Indice pour enigme", font=("Arial", 48))
+        self.enigmeLabel = Label(self.mainview, text="Indice pour enigme", font=("Arial", 35))
         self.enigmeNumberLabel = Label(self.mainview, text="Numéro Enigme", font=("Arial", 32))
         self.lblImage = Label()
 
@@ -24,14 +24,20 @@ class UI:
         self.enigmeLabel.config(text=textLabel)
 
     def PlaceAllLabels(self):
-        self.titleLabel.place(relx=.5, rely=.10, anchor="center")
-        self.enigmeLabel.place(relx=.5, rely=.20, anchor="center")
+        self.titleLabel.place(relx=.5, rely=.1, anchor="center")
+        self.enigmeLabel.place(relx=.5, rely=.3, anchor="center")
         self.enigmeNumberLabel.place(relx=0.0, rely=1.0, anchor='sw')
     
     def Display(self, interval=100):
         self.PlaceAllLabels()
         self.mainview.after(interval,self.mainview.quit)
         self.mainview.mainloop()
+    
+    def Update_View(self, title, enigmetxt, enigmenb, Enigmalistlen):
+        self.SetTitle(title)
+        self.SetEnigmeText(enigmetxt)
+        self.SetEnigmeNumberText("Enigme %02d/%02d"%(enigmenb, Enigmalistlen))
+        self.Display()
     
     def SetImage(self, imageName=""):
         if imageName != "":
@@ -48,28 +54,6 @@ class UI:
             pass
         
         
-
-
-
-userInterface = UI()
-
-userInterface.SetTitle("eowrzqw")
-userInterface.SetEnigmeText("qwerqwrqw")
-userInterface.SetEnigmeNumberText("Enigme XX/XX")
-
-userInterface.SetImage("giphy.gif")
-toto = 0
-while True:
-    userInterface.Display()
-    userInterface.SetEnigmeText("Zut voila toto Numéro "+str(toto))
-    toto+=1
-    if toto==25:
-        userInterface.SetImage("random.jpg")
-        pass
-    if toto==50:
-        userInterface.SetImage()
-        pass
-
 
 
 

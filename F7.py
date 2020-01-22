@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-# -*- coding: utf8 -*-
-# Copyright 2014,2018 Mario Gomez <mario.gomez@teubi.co>
 import RPi.GPIO as GPIO
 import MFRC522
 import signal
@@ -18,6 +16,9 @@ MIFAREReader = MFRC522.MFRC522()
 
 def Enigme():
     return enigme
+    
+def Title():
+    return "Right sequence"
 
 def Step():
     global index 
@@ -46,45 +47,56 @@ def RandomSequence(seq_len):
             enigme += "G"
         elif x == card3_id:
             enigme += "R"
-        enigme += " "
+        #enigme += " "
     
     return cards
         
 
-def Start():
+def Start(display):
     continue_reading = True
     continue_enigme = True
     global index
     global cards
-    cardids = cards
+    global enigme
     
+    cardids = cards
+    enigmebackup = enigme
     
     last = 0
     while continue_enigme:
         
         index += 1
         continue_reading = True
+        
         if index >= len(cardids):
             continue_enigme = False
         else:
             while continue_reading:
                 time.sleep(0.1)
                 (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
-                #if status == MIFAREReader.MI_OK:
-                    #print("Carte détectée")
                 
                 (status,uid) = MIFAREReader.MFRC522_Anticoll()
                 if status == MIFAREReader.MI_OK:
                     if uid[0] != last:      
                         if cardids[index] == uid[0]:
-                            print("CARTE OK")
+                        
+                            s = list(enigme)
+                            s[index] = '-'
+                            enigme = "".join(s)
+                            display.SetEnigmeText(enigme)
+                            display.Display()
+                            
+                            print("CARTE OK %s" %enigme)
                             continue_reading = False
                             last = uid[0]
                         else:
                             print("ERROR L'ENIGME VA RECOMMENCER...")
                             continue_reading = False
                             index = -1    
-                            last = 0  
+                            last = 0
+                            enigme = enigmebackup
+                            display.SetEnigmeText(enigme)
+                            display.Display()
     
     print ("ENIGME TERMINEE")
 
