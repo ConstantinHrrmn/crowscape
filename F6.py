@@ -9,10 +9,10 @@ from luma.core.legacy import text, show_message
 from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_FONT, LCD_FONT
 
 buttons = ButtonMatrix()
-matrixState = [[False,False,False,False],
-    [False,False,False,False],
-    [False,False,False,False],
-    [False,False,False,False]]
+matrixState = [[True,True,False,False],
+               [True,False,False,False],
+               [False,False,False,False],
+               [False,False,False,False]]
 #verify that all matrix is good
 def allOn():
     for row in matrixState:
@@ -22,14 +22,17 @@ def allOn():
     return True
 
 def allOff():
-    matrixState = [[False,False,False,False],
-    [False,False,False,False],
-    [False,False,False,False],
-    [False,False,False,False]]
+    for row in range(len(matrixState)):
+        for col in range(len(matrixState[row])):
+            if(matrixState[row][col]):
+                matrixState[row][col] = False
     draw()
 
 def Enigme():
-    return "Tout dois être rouge !"
+    return "Les jaunes mettent tout en rouge"
+    
+def Title():
+    return "Light switch"
 
 def draw():
     serial = spi(port=0, device=1, gpio=noop())
@@ -40,7 +43,12 @@ def draw():
                 if(matrixState[row][col]):
                     draw.rectangle((row*2,col*2,row*2+1,col*2+1),outline="white")
 
-def Start():
+def Start(display):
+    global matrixState
+    matrixState = [[True,True,False,False],
+    [True,False,False,False],
+    [False,False,False,False],
+    [False,False,False,False]]
     draw()
     playing = True
     while(playing):
@@ -73,3 +81,4 @@ def Start():
                     GPIO.output(buttons.columnPins[j],1)
     allOff()
     print("ENIGME TERMINEE")
+allOff()

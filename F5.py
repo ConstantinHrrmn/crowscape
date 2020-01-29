@@ -28,8 +28,11 @@ def CreateCode():
 
 def Enigme():
     return "Explosez les bateaux aux bonnes coordonnées"
-
-def Start():
+    
+def Title():
+    return "Bataille navale"
+    
+def Start(display):
     index = 0
 
     buttons = ButtonMatrix()

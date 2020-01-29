@@ -4,7 +4,6 @@ from multiprocessing import Process
 
 import Timer
 import main
-import F8
 
 p1 = Process(target=Timer.Start,)
 print("The Game Started")

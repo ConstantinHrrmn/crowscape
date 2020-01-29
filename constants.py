@@ -9,10 +9,10 @@ import Adafruit_DHT
 led_pin = 26
 
 # Green buttons 
-gb_up = 37
-gb_down = 33
-gb_left = 22
-gb_right = 35
+gb_up = 26
+gb_down = 13
+gb_left = 19
+gb_right = 25
 
 # yellow buttons 
 class ButtonMatrix():
