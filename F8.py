@@ -51,7 +51,7 @@ class UI:
 
 
 
-"""userInterface = UI()
+userInterface = UI()
 
 userInterface.SetTitle("eowrzqw")
 userInterface.SetEnigmeText("qwerqwrqw")
@@ -69,7 +69,6 @@ while True:
     if toto==50:
         userInterface.SetImage()
         pass
-"""
 
 
 
