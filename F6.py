@@ -10,9 +10,9 @@ from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_
 
 buttons = ButtonMatrix()
 matrixState = [[True,True,False,False],
-               [True,False,False,False],
-               [False,False,False,False],
-               [False,False,False,False]]
+    [True,False,False,False],
+    [False,False,False,False],
+    [False,False,False,False]]
 #verify that all matrix is good
 def allOn():
     for row in matrixState:

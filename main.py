@@ -14,7 +14,7 @@ from window import UI  # Affichage des énigmes sur l'écran du raspberry
 userInterface = UI()
 userInterface.Display()
 
-Enigmalist = [F2, F5, F6, F7]
+Enigmalist = [F7]
 
 def Update_View(title, enigmetxt, enigmenb):
     userInterface.SetTitle(title)
@@ -28,9 +28,6 @@ def Start():
         Update_View(Enigmalist[index].Title(), Enigmalist[index].Enigme(), index+1)
         Enigmalist[index].Start(userInterface)
         index += 1
-    
-    #print("Enigme 5 : " + F9.Enigme())
-    #F9.Start()
     
     
 

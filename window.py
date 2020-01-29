@@ -57,31 +57,6 @@ class UI:
 
 
 
-<<<<<<< HEAD:F8.py
-userInterface = UI()
-
-userInterface.SetTitle("eowrzqw")
-userInterface.SetEnigmeText("qwerqwrqw")
-userInterface.SetEnigmeNumberText("Enigme XX/XX")
-
-userInterface.SetImage("giphy.gif")
-toto = 0
-while True:
-    userInterface.Display()
-    userInterface.SetEnigmeText("Zut voila toto Numéro "+str(toto))
-    toto+=1
-    if toto==25:
-        userInterface.SetImage("random.jpg")
-        pass
-    if toto==50:
-        userInterface.SetImage()
-        pass
-
-
-
-
-=======
->>>>>>> cd9bebcb99f2d5caa30b656f692eaf25af0caacd:window.py
 """photo = PhotoImage(file="giphy.gif")
 w = Label(mainview, image=photo)
 w.pack()

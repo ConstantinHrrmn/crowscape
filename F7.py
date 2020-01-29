@@ -26,27 +26,40 @@ def Step():
 
 def RandomSequence(seq_len):
     global enigme 
-    card1_id = 204
-    card2_id = 59
-    card3_id = 105
+    card1_id = 109 #A
+    card2_id = 133 #B
+    card3_id = 220 #C
+    card4_id = 107 #D
+    card5_id = 131 #E
+    card6_id = 239 #F
+    card7_id = 237 #G
+    
     
     last_id = 0
     cards = []
     
     for i in range(seq_len):
-        sel = random.choice([card1_id,card2_id,card3_id])
+        sel = random.choice([card1_id,card2_id,card3_id,card4_id,card5_id,card6_id,card7_id])
         while(sel == last_id):
-            sel = random.choice([card1_id,card2_id,card3_id])
+            sel = random.choice([card1_id,card2_id,card3_id,card4_id,card5_id,card6_id,card7_id])
         last_id = sel
         cards.append(sel)
     
     for x in cards:
         if x == card1_id:
-            enigme += "B"
+            enigme += "A"
         elif x == card2_id:
-            enigme += "G"
+            enigme += "B"
         elif x == card3_id:
-            enigme += "R"
+            enigme += "C"
+        elif x == card4_id:
+            enigme += "D"
+        elif x == card5_id:
+            enigme += "E"
+        elif x == card6_id:
+            enigme += "F"
+        elif x == card7_id:
+            enigme += "G"
         #enigme += " "
     
     return cards
@@ -77,8 +90,9 @@ def Start(display):
                 
                 (status,uid) = MIFAREReader.MFRC522_Anticoll()
                 if status == MIFAREReader.MI_OK:
-                    if uid[0] != last:      
-                        if cardids[index] == uid[0]:
+                    print(uid[2]);
+                    if uid[2] != last:
+                        if cardids[index] == uid[2]:
                         
                             s = list(enigme)
                             s[index] = '-'
