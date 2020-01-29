@@ -1,62 +1,41 @@
 #!/usr/bin/python3
 from constants import GPIO,gb_up,gb_down,gb_left,gb_right,time
-import random
-alea = ['^','v','<','>']
-SUITE_SIZE = 5
+import time
+
+suite = ['^','v','<','>']
 
 def Enigme():
     return "Simon dis ..."
 
-def Start(display):
-    suite = []
-    for i in range(SUITE_SIZE):
-        suite.append(random.choice(alea))
-
+def Start():
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(gb_up,GPIO.IN,pull_up_down=GPIO.PUD_UP)
-    GPIO.setup(gb_down,GPIO.IN,pull_up_down=GPIO.PUD_UP)
-    GPIO.setup(gb_left,GPIO.IN,pull_up_down=GPIO.PUD_UP)
-    GPIO.setup(gb_right,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(gb_up,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(gb_down,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(gb_left,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(gb_right,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
     
+    
+    print("Bon bah ca ce lance")
     indexPlaying = 0
     while indexPlaying < len(suite):
-        
-        ShowSuite(indexPlaying+1,suite,display)
+        ShowSuite(indexPlaying+1)
         waitingInput = True
-        
         while waitingInput:
-            up = GPIO.input(gb_up)
-            down = GPIO.input(gb_down)
-            left = GPIO.input(gb_left)
-            right = GPIO.input(gb_right)
-
+            up = GPIO.input(gb_up) == 0
+            down = GPIO.input(gb_down) == 0
+            left = GPIO.input(gb_left) == 0 
+            right = GPIO.input(gb_right) == 0
+             #print("%d %d %d %d" % (up,down,left,right)) 
+            
             if(up or down or left or right):
-                correctInput = False
                 waitingInput = False
-
-                if(suite[indexPlaying] == '^' and up):
-                    correctInput = True
-                elif(suite[indexPlaying] == '<' and left): 
-                    correctInput = True
-                elif(suite[indexPlaying] == '>' and right): 
-                    correctInput = True
-                elif(suite[indexPlaying] == 'v' and down):
-                    correctInput = True
-                if(correctInput):
-                    indexPlaying+=1
+        
+        indexPlaying+=1
     
-def ShowSuite(to,suite,display):
+def ShowSuite(to):
     for i in range(to):
-        PrintI(suite[i],display)
-    display.SetImage('Simon_None.png')
+        PrintI(suite[i])
                 
-def PrintI(i,display):
-    if(i == '^'):
-        display.SetImage('Simon_Up.png')
-    elif(i == '<'): 
-        display.SetImage('Simon_Left.png')
-    elif(i == '>'): 
-        display.SetImage('Simon_Right.png')
-    elif(i == 'v'):
-        display.SetImage('Simon_Down.png')
+def PrintI(i):
+    print(i)
     time.sleep(1)
