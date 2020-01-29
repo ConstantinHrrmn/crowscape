@@ -3,6 +3,7 @@
 # Script principal qui va gérer toutes les énigmes les unes après les autres
 
 import F2 # Enigme de la lumière
+import F3 # Enigme du labyrinthe
 import F4 # Enigme humidité
 import F5 # Enigme bataille navale
 import F6 # Enigme des carrés rouge
@@ -14,7 +15,7 @@ from window import UI  # Affichage des énigmes sur l'écran du raspberry
 userInterface = UI()
 userInterface.Display()
 
-Enigmalist = [F7]
+Enigmalist = [F3]
 
 def Update_View(title, enigmetxt, enigmenb):
     userInterface.SetTitle(title)

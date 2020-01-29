@@ -47,7 +47,7 @@ class UI:
             self.lblImage.after(100, self.lblImage.destroy)
             self.lblImage = Label(self.mainview, image=render)
             self.lblImage.image = render
-            self.lblImage.place(relx=.5, rely=.75, anchor="center")
+            self.lblImage.place(relx=.5, rely=.65, anchor="center")
             pass
         else:
             self.lblImage.destroy()
