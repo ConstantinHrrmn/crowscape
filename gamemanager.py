@@ -31,6 +31,7 @@ while waitingToPlay:
     if status == MIFAREReader.MI_OK:
         if uid[2] == card1_id:
             waitingToPlay = False
+<<<<<<< HEAD
 
 # Timer before beginning of the game
 userInterface.Update_View("Beginning in ...", "3")
@@ -43,6 +44,20 @@ time.sleep(1)
 
 
 
+=======
+
+# Timer before beginning of the game
+userInterface.Update_View("Beginning in ...", "3")
+time.sleep(1)
+userInterface.Update_View("Beginning in ...", "2")
+time.sleep(1)
+userInterface.Update_View("Beginning in ...", "1")
+time.sleep(1)
+
+
+
+
+>>>>>>> 8c03d5e17deba0dcd96197838f811f80f788463e
 # Creating both process
 p1 = Process(target=Timer.Start,) # Process the timer
 p2 = Process(target=main.Start , args=(userInterface,)) # Process of the game
@@ -90,6 +105,10 @@ userInterface.Display()
 
 endText = "YOU WIN"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c03d5e17deba0dcd96197838f811f80f788463e
 if(endText == "YOU WIN"):
     userInterface.SetImage("win.png")
 else:
