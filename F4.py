@@ -16,4 +16,4 @@ def Enigme():
     return "Quand la boite bleu est froide, il faut la réchauffer"
 
 def Title():
-    return "il fait froid"
+    return "Il fait froid"

@@ -79,13 +79,13 @@ def ShowSuite(to,suite,display):
 def PrintI(i,display):
     print(i)
     if(i == '^'):
-        display.SetImage("up.png")
+        display.SetImage("assets/simon/up.png")
     elif(i == '<'): 
-        display.SetImage("left.png")
+        display.SetImage("assets/simon/left.png")
     elif(i == '>'): 
-        display.SetImage("right.png")
+        display.SetImage("assets/simon/right.png")
     elif(i == 'v'):
-        display.SetImage("down.png")
+        display.SetImage("assets/simon/down.png")
     display.Display()
     time.sleep(1)
     display.SetImage()

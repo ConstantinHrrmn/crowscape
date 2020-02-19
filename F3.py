@@ -61,13 +61,13 @@ def SelectLab(display):
     choosenindex = random.randint(0,2)
     if(choosenindex == 0):
         mainlab = Lab1
-        display.SetImage("1.png")
+        display.SetImage("assets/lab/1.png")
     elif(choosenindex == 1):
         mainlab = Lab2
-        display.SetImage("2.png")
+        display.SetImage("assets/lab/2.png")
     elif(choosenindex == 2):
         mainlab = Lab3
-        display.SetImage("3.png")
+        display.SetImage("assets/lab/3.png")
 
 def allOff():
     for row in range(len(matrixState)):

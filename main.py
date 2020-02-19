@@ -23,13 +23,13 @@ def Start(userInterface):
     # F9,F2, F3, F4, F5, F6, F7
     Enigmalist = [F2]
     
-    
-    
     index = 0
     while(index < len(Enigmalist)):
         Update_View(userInterface,Enigmalist[index].Title(), Enigmalist[index].Enigme(), index+1,len(Enigmalist))
         Enigmalist[index].Start(userInterface)
         index += 1
+
+    userInterface.Destroy()
         
     
     

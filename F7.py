@@ -18,7 +18,7 @@ def Enigme():
     return enigme
     
 def Title():
-    return "Right sequence"
+    return "La bonne séquence"
 
 def Step():
     global index 

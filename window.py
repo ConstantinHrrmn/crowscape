@@ -7,8 +7,10 @@ class UI:
     
     def __init__(self):
         self.mainview = Tk(className='CrowScape')
-        self.mainview.attributes("-fullscreen", True)   
         
+
+    def Initlabels(self):   
+        self.mainview.attributes("-fullscreen", True)    
         self.titleLabel = Label(self.mainview, text="Enigme 1", font=("Arial", 64))
         self.enigmeLabel = Label(self.mainview, text="Indice pour enigme", font=("Arial", 35))
         self.enigmeNumberLabel = Label(self.mainview, text="Numéro Enigme", font=("Arial", 32))
