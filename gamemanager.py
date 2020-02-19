@@ -90,8 +90,6 @@ userInterface.Display()
 
 endText = "YOU WIN"
 
-"SALUT"
-
 if(endText == "YOU WIN"):
     userInterface.SetImage("win.png")
 else:
