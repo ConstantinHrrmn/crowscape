@@ -11,8 +11,8 @@ led_pin = 26
 # Green buttons 
 gb_up = 26
 gb_down = 13
-gb_left = 19
-gb_right = 25
+gb_left = 25
+gb_right = 19
 
 # yellow buttons 
 class ButtonMatrix():

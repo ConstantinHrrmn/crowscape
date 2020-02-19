@@ -26,17 +26,17 @@ matrixState = [
             [False,False,False,False, False, False, False, False]
           ]
 
+# This are the maps of the labyrinths
 Lab1 = [
-  [3,2,0,0,0,2,2,2],
-  [0,2,0,2,0,2,0,1],
+  [1,2,0,0,0,2,2,2],
+  [0,2,0,2,0,2,0,3],
   [0,0,0,2,0,2,0,2],
   [2,2,2,2,0,2,0,2],
   [0,0,0,0,0,2,0,2],
   [2,2,2,2,0,2,0,0],
   [2,0,0,0,0,0,0,2],
   [2,2,2,2,2,2,0,2]
-]
-
+  ]
 Lab2 = [
   [0,0,1,2,2,2,2,2],
   [0,2,2,0,2,0,0,0],
@@ -45,24 +45,20 @@ Lab2 = [
   [2,0,2,0,2,2,2,2],
   [0,0,2,0,0,0,0,0],
   [2,2,2,2,0,2,2,0],
-  [0,0,0,0,0,0,3,0]
-]
-
+  [0,0,0,0,0,0,3,0]]
 Lab3 = [
   [0,0,0,0,0,0,0,0],
   [0,2,0,2,0,2,2,0],
   [2,2,2,2,0,0,2,0],
-  [0,0,3,2,1,0,2,0],
+  [0,0,1,2,3,0,2,0],
   [0,2,2,2,2,2,2,0],
   [0,2,0,0,0,0,0,0],
   [0,2,0,2,0,2,2,2],
-  [0,0,0,2,0,0,0,0]
-]
+  [0,0,0,2,0,0,0,0]]
 
 def SelectLab(display):
     global mainlab
     choosenindex = random.randint(0,2)
-    print(choosenindex)
     if(choosenindex == 0):
         mainlab = Lab1
         display.SetImage("1.png")
@@ -114,9 +110,9 @@ def IsMoveOk(dir):
     if(dir == "DOWN"):
         return (currentPos[0] + 1 < 8 and mainlab[currentPos[0]+1][currentPos[1]] != 2)
     if(dir == "RIGHT"):
-        return (currentPos[1] + 1 < 8 and mainlab[currentPos[0]][currentPos[1]+1] != 2)
-    if(dir == "LEFT"):
         return (currentPos[1] - 1 >= 0 and mainlab[currentPos[0]][currentPos[1]-1] != 2)
+    if(dir == "LEFT"):
+        return (currentPos[1] + 1 < 8 and mainlab[currentPos[0]][currentPos[1]+1] != 2)
 
 def IsWin():
     return mainlab[currentPos[0]][currentPos[1]] == 3
@@ -132,13 +128,12 @@ def moving(dir):
     
     if(dir == "LEFT"):
         if(IsMoveOk("LEFT")):
-            currentPos[1] -= 1
+            currentPos[1] += 1
         
     if(dir == "RIGHT"):
         if(IsMoveOk("RIGHT")):
-            currentPos[1] += 1
-            
-    print(currentPos)
+            currentPos[1] -= 1
+
     refreshPosition()
 
 def Start(display):
@@ -151,8 +146,6 @@ def Start(display):
     SelectLab(display)
     display.Display()
     SpawnPoint()
-    
-    print(currentPos)
     
     refreshPosition()
         
@@ -182,23 +175,22 @@ def Start(display):
         
         if(oldUp == False and up):
             moving("UP")
-            time.sleep(.3)
+            time.sleep(.1)
         
         if(oldDown == False  and down):
             moving("DOWN")
-            time.sleep(.3)
+            time.sleep(.1)
         
         if(oldLeft == False  and left):
             moving("LEFT")
-            time.sleep(.3)
+            time.sleep(.1)
         
         if(oldRight == False  and right):
             moving("RIGHT")
-            time.sleep(.3)
+            time.sleep(.1)
         
         if(IsWin()):
             playing = False
             
-
-            
-            
+    display.SetImage("")
+    display.Display()

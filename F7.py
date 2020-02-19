@@ -102,7 +102,7 @@ def Start(display):
                             
                             print("CARTE OK %s" %enigme)
                             continue_reading = False
-                            last = uid[0]
+                            last = uid[2]
                         else:
                             print("ERROR L'ENIGME VA RECOMMENCER...")
                             continue_reading = False

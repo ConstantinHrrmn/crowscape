@@ -32,17 +32,19 @@ class UI:
         self.PlaceAllLabels()
         self.mainview.after(interval,self.mainview.quit)
         self.mainview.mainloop()
-    
-    def Update_View(self, title, enigmetxt, enigmenb, Enigmalistlen):
+        
+    def Destroy(self, interval = 1):
+        self.mainview.after(interval,self.mainview.destroy)
+        
+    def Update_View(self, title, enigmetxt):
         self.SetTitle(title)
         self.SetEnigmeText(enigmetxt)
-        self.SetEnigmeNumberText("Enigme %02d/%02d"%(enigmenb, Enigmalistlen))
         self.Display()
     
     def SetImage(self, imageName=""):
         if imageName != "":
-            enigmImage = Image.open(imageName) # Image Enigme
-            render = ImageTk.PhotoImage(enigmImage) # Create a render of the enigme image
+            
+            render = ImageTk.PhotoImage(master=self.mainview,file=imageName) # Create a render of the enigme image
         
             self.lblImage.after(100, self.lblImage.destroy)
             self.lblImage = Label(self.mainview, image=render)
@@ -50,19 +52,6 @@ class UI:
             self.lblImage.place(relx=.5, rely=.65, anchor="center")
             pass
         else:
-            self.lblImage.destroy()
+            if(self.lblImage is not None):
+                self.lblImage.destroy()
             pass
-        
-        
-
-
-
-"""photo = PhotoImage(file="giphy.gif")
-w = Label(mainview, image=photo)
-w.pack()
-
-title.set("Test")
-enigmeText.set("Enigme Test")
-enigmeNumberText.set("Enigme XX/XX")
-
-mainview.mainloop()"""
