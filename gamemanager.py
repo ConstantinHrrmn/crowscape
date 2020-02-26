@@ -10,7 +10,6 @@ import RPi.GPIO as GPIO
 import MFRC522
 import main
 import time
-import end
 
 # create the reader object
 MIFAREReader = MFRC522.MFRC522()
