@@ -90,7 +90,7 @@ def Start(display):
                 
                 (status,uid) = MIFAREReader.MFRC522_Anticoll()
                 if status == MIFAREReader.MI_OK:
-                    print(uid[2]);
+                    #print(uid[2]);
                     if uid[2] != last:
                         if cardids[index] == uid[2]:
                         
@@ -100,11 +100,11 @@ def Start(display):
                             display.SetEnigmeText(enigme)
                             display.Display()
                             
-                            print("CARTE OK %s" %enigme)
+                            #print("CARTE OK %s" %enigme)
                             continue_reading = False
                             last = uid[2]
                         else:
-                            print("ERROR L'ENIGME VA RECOMMENCER...")
+                            #print("ERROR L'ENIGME VA RECOMMENCER...")
                             continue_reading = False
                             index = -1    
                             last = 0
@@ -112,7 +112,7 @@ def Start(display):
                             display.SetEnigmeText(enigme)
                             display.Display()
     
-    print ("ENIGME TERMINEE")
+    print("ENIGME TERMINEE %s" %Title())
 
 
 cards = RandomSequence(10)

@@ -17,7 +17,7 @@ class Coordonnees():
 
     def GetPos(self):
         val = 'A' if self.row == 3 else 'B' if self.row == 2 else 'C' if self.row == 1 else 'D'
-        return val + str(self.col)
+        return val + str(self.col+1)
 
 def CreateCode():
     for i in range(5):
@@ -73,19 +73,25 @@ def Start(display):
                                     module_done = False
                                 else:
                                     coordToFound = my_coords[index]
-                                    print("Good")
+                                    print("Good")                                
                             else:
                                 index = 0
                                 coordToFound = my_coords[index]
                                 print("Fail")
-
+                                
+                            # Print a two line message
+                            lcd.clear()
+                            lcd.message("-"*index*2+code[index*2:])
+                            
                             # do nothing while button is being held down
                             while(buttons.buttonHeldDown(i)):
                                 pass
                     # return each output pin to high
                     GPIO.output(buttons.columnPins[j],1)
 
-    print("ENIGME TERMINEE")
+    print("ENIGME TERMINEE %s" %Title())
 
     lcd.clear()
-    lcd.message("OK !")
+    # Turn backlight on
+    lcd.set_backlight(1)
+    

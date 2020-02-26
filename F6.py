@@ -8,7 +8,7 @@ from luma.core.virtual import viewport
 from luma.core.legacy import text, show_message
 from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_FONT, LCD_FONT
 
-buttons = ButtonMatrix()
+
 matrixState = [[True,True,False,False],
     [True,False,False,False],
     [False,False,False,False],
@@ -32,7 +32,7 @@ def Enigme():
     return "Les jaunes mettent tout en rouge"
     
 def Title():
-    return "Light switch"
+    return "Change lumière"
 
 def draw():
     serial = spi(port=0, device=1, gpio=noop())
@@ -44,6 +44,7 @@ def draw():
                     draw.rectangle((row*2,col*2,row*2+1,col*2+1),outline="white")
 
 def Start(display):
+    buttons = ButtonMatrix()
     global matrixState
     matrixState = [[True,True,False,False],
     [True,False,False,False],
@@ -80,5 +81,5 @@ def Start(display):
                     # return each output pin to high
                     GPIO.output(buttons.columnPins[j],1)
     allOff()
-    print("ENIGME TERMINEE")
+    print("ENIGME TERMINEE %s" %Title())
 allOff()

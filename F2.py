@@ -53,16 +53,16 @@ def Start(var):
 
     playing = True
     sensor = LightSensor()
-    print("Calibration du module")
+    #print("Calibration du module")
     while sensor.readLight() < 10:
         time.sleep(0.5)
-    print("Calibration du module terminée")
+    #print("Calibration du module terminée")
     while playing:
         val = sensor.readLight()
         if(val < 10):
             playing = False
         time.sleep(0.5)
-    print("ENIGME TERMINEE")
+    print("ENIGME TERMINEE %s" %Title())
 
 def Enigme():
     return "Vas-y cache la petite boite bleu de droite"

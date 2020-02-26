@@ -17,7 +17,7 @@ def Start():
     sev_seg.begin()
     
     minute = 5 # le nombre de minutes avec lequel le minuteur commence
-    second = 5 # le nombre de secondes avec lequel le minuteur commence
+    second = 0 # le nombre de secondes avec lequel le minuteur commence
     base_second = 59 # Les secondes max par défaut
     
     while True:   

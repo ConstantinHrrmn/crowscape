@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 from constants import GPIO,gb_up,gb_down,gb_left,gb_right,time
 import random
+
 alea = ['^','v','<','>']
 SUITE_SIZE = 5
 
 def Title():
     return "Simon dis ..."
+
 def Enigme():
     return ""
 
@@ -20,10 +22,10 @@ def Start(display):
     GPIO.setup(gb_left,GPIO.IN,pull_up_down=GPIO.PUD_UP)
     GPIO.setup(gb_right,GPIO.IN,pull_up_down=GPIO.PUD_UP)
     
-    indexPlaying = 0
-    while indexPlaying < len(suite):
+    indexPlaying = SUITE_SIZE - 1
+    while indexPlaying < SUITE_SIZE:
         
-        ShowSuite(indexPlaying+1,suite,display)
+        ShowSuite(suite,display)
         waitingInput = True
         actualInput = 0
         
@@ -59,7 +61,7 @@ def Start(display):
                 elif(suite[actualInput] == 'v' and down):
                     correctInput = True
                 if(correctInput):
-                    print("Ok")
+                    #print("Ok")
                     if(indexPlaying == actualInput):
                         waitingInput = False
                         indexPlaying += 1
@@ -67,17 +69,19 @@ def Start(display):
                 else:
                     actualInput = 0
                     waitingInput = False
+
+        print("ENIGME TERMINEE %s" %Title())
                     
     
-def ShowSuite(to,suite,display):
+def ShowSuite(suite,display):
     display.SetEnigmeText("")
-    for i in range(to):
-        PrintI(suite[i],display)
+    for i in suite:
+        PrintI(i,display)
     display.SetEnigmeText("Your turn...")
     display.Display()
                 
 def PrintI(i,display):
-    print(i)
+    #print(i)
     if(i == '^'):
         display.SetImage("assets/simon/up.png")
     elif(i == '<'): 

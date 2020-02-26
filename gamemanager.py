@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from multiprocessing import Process
+
 from window import UI  # Affichage des énigmes sur l'écran du raspberry
 
 import Timer
@@ -22,7 +23,7 @@ userInterface.SetEnigmeNumberText("")
 userInterface.Update_View("CROW'SCAPE GAME", "TO START THE GAME, SCAN THE CARD A")
 
 waitingToPlay = True
-card1_id = 109 #A
+card1_id = 109 #The card A
 
 # Waiting for the players card to start the game
 while waitingToPlay:
@@ -36,69 +37,39 @@ while waitingToPlay:
 
 # Timer before beginning of the game
 userInterface.Update_View("Beginning in ...", "3")
-time.sleep(1)
+time.sleep(1) # 1 second sleep
 userInterface.Update_View("Beginning in ...", "2")
-time.sleep(1)
+time.sleep(1) # 1 second sleep
 userInterface.Update_View("Beginning in ...", "1")
-time.sleep(1)
+time.sleep(1) # 1 second sleep
 
 # Creating both process
 p1 = Process(target=Timer.Start,) # Process the timer
-p2 = Process(target=main.Start , args=(userInterface,)) # Process of the game
+p2 = Process(target=main.Start ,) # Process of the game  args=(userInterface,)
 
 playing = True
 
-# Beginning the game
+#Starting the timer
 p1.start()
+#Starting the game
 p2.start()
 
-endText = "YOU WIN"
-
 while playing:
-    
     # Checking if the Process 1 is still alive
     if(p1.is_alive() is False):
         print("THE BOMB EXPLODED")
         playing = False
-        endText = "YOU FAIL"
-        p3 = Process(target=end.Start , args=("LOOSE",)) # Process of the game
-        p3.start()
     
     # Checking if the Process 2 is still alive
     if(p2.is_alive() is False):
         print("YOU WIN")
         playing = False
-        p3 = Process(target=end.Start , args=("WIN",)) # Process of the game
-        p3.start()
 
-"""
 p1.terminate()
 p2.terminate()
 p1.join()
 p2.join()
-"""
 
 print("END OF GAME")
-
-"""userInterface.Destroy()
-print("Destroyed")
-userInterface = None
-print(userInterface)
-"""
-#Creating the main menu interface
-#userInterface.SetEnigmeNumberText("")
-#userInterface.Display()
-
-endText = "YOU WIN"
-
-#if(endText == "YOU WIN"):
-    #userInterface.SetImage("win.png")
-#else:
-    #userInterface.SetImage("lose.png")
-    
-#userInterface.Update_View(endText, "Thanks for playing \n Card B to restart")
-
-waitingToPlay = True
-card1_id = 133 #A
 
     

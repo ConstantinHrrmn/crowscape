@@ -11,9 +11,9 @@ class UI:
 
     def Initlabels(self):   
         self.mainview.attributes("-fullscreen", True)    
-        self.titleLabel = Label(self.mainview, text="Enigme 1", font=("Arial", 64))
-        self.enigmeLabel = Label(self.mainview, text="Indice pour enigme", font=("Arial", 35))
-        self.enigmeNumberLabel = Label(self.mainview, text="Numéro Enigme", font=("Arial", 32))
+        self.titleLabel = Label(self.mainview, text="", font=("Arial", 64))
+        self.enigmeLabel = Label(self.mainview, text="", font=("Arial", 35))
+        self.enigmeNumberLabel = Label(self.mainview, text="", font=("Arial", 32))
         self.lblImage = Label()
 
     def SetTitle(self, textLabel):
@@ -42,7 +42,10 @@ class UI:
         self.SetTitle(title)
         self.SetEnigmeText(enigmetxt)
         self.Display()
-    
+
+    def quit(self):
+       self.mainview.destroy()
+
     def SetImage(self, imageName=""):
         if imageName != "":
             

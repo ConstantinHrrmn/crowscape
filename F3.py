@@ -116,23 +116,32 @@ def IsMoveOk(dir):
 
 def IsWin():
     return mainlab[currentPos[0]][currentPos[1]] == 3
+    
 
 def moving(dir):
     if(dir == "UP"):
         if(IsMoveOk("UP")):
             currentPos[0] -= 1
+        else:
+            SpawnPoint()
             
     if(dir == "DOWN"):
         if(IsMoveOk("DOWN")):
             currentPos[0] += 1
+        else:
+            SpawnPoint()
     
     if(dir == "LEFT"):
         if(IsMoveOk("LEFT")):
             currentPos[1] += 1
+        else:
+            SpawnPoint()
         
     if(dir == "RIGHT"):
         if(IsMoveOk("RIGHT")):
             currentPos[1] -= 1
+        else:
+            SpawnPoint()
 
     refreshPosition()
 
@@ -191,6 +200,7 @@ def Start(display):
         
         if(IsWin()):
             playing = False
+            print("ENIGME TERMINEE %s" %Title())
             
     display.SetImage("")
     display.Display()

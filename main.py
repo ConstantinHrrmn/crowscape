@@ -9,27 +9,37 @@ import F5 # Enigme bataille navale
 import F6 # Enigme des carrés rouge
 import F7 # Code avec les cates RFID
 import F9 # Simon says
+import random
 
 from window import UI  # Affichage des énigmes sur l'écran du raspberry
 
-def Update_View(userInterface,title, enigmetxt, enigmenb,maxEnigmeNb):
-    userInterface.SetTitle(title)
-    userInterface.SetEnigmeText(enigmetxt)
-    userInterface.SetEnigmeNumberText("Enigme %02d/%02d"%(enigmenb, maxEnigmeNb))
-    userInterface.Display()
+def Update_View(ui,title, enigmetxt, enigmenb,maxEnigmeNb):
+    ui.SetTitle(title)
+    ui.SetEnigmeText(enigmetxt)
+    ui.SetEnigmeNumberText("Enigme %02d/%02d"%(enigmenb, maxEnigmeNb))
+    ui.Display()
 
-def Start(userInterface):
+def Start(): #userInterface
+
+    # Création de l'interface
+    ui = UI()
+    ui.Initlabels()
+    ui.SetEnigmeNumberText("")
+    ui.Update_View("", "")
 
     # F9,F2, F3, F4, F5, F6, F7
-    Enigmalist = [F2]
+    Enigmalist = [F3]
+    #Shuffle alle the enigmes
+    random.shuffle(Enigmalist)
     
     index = 0
     while(index < len(Enigmalist)):
-        Update_View(userInterface,Enigmalist[index].Title(), Enigmalist[index].Enigme(), index+1,len(Enigmalist))
-        Enigmalist[index].Start(userInterface)
+        Update_View(ui,Enigmalist[index].Title(), Enigmalist[index].Enigme(), index+1,len(Enigmalist))
+        Enigmalist[index].Start(ui)
         index += 1
 
-    userInterface.Destroy()
+    # Suppression de l'interface
+    ui.quit()
         
     
     
