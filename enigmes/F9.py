@@ -77,7 +77,7 @@ def ShowSuite(suite,display):
     display.SetEnigmeText("")
     for i in suite:
         PrintI(i,display)
-    display.SetEnigmeText("Your turn...")
+    display.SetEnigmeText("A ton tour ! Imite-moi.")
     display.Display()
                 
 def PrintI(i,display):
